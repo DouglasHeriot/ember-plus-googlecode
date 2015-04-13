@@ -1,7 +1,7 @@
 #ifndef __TINYEMBERROUTER_NET_TCPCLIENT_H
 #define __TINYEMBERROUTER_NET_TCPCLIENT_H
 
-#include <QtNetwork\qtcpsocket.h>
+#include <QtNetwork/qtcpsocket.h>
 
 namespace net
 {

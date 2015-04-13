@@ -11,6 +11,8 @@
 
 namespace glow
 {
+   class Consumer;
+
    /**
      * The application's Ember+ front-end.
      * Aggregates net::TcpServer to listen for inbound connections from consumers.
