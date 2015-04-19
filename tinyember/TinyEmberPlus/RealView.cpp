@@ -13,7 +13,7 @@ RealView::RealView(QWidget* parent, gadget::RealParameter* parameter)
     m_parameter->registerListener(this);
 
     auto streamFormats = util::StreamFormatConverter();
-    for each(auto& entry in streamFormats)
+    for(auto& entry : streamFormats)
     {
         auto const text = QString::fromStdString(entry.second);
         m_view->streamFormatBox->addItem(text);

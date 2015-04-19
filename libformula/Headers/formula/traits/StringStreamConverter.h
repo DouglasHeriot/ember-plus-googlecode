@@ -3,6 +3,7 @@
 
 #include <memory>
 #include <vector>
+#include <cstdlib>
 #include "../Types.hpp"
 
 #pragma warning( push )
@@ -58,7 +59,7 @@ namespace libformula { namespace traits
             template<typename InputIterator>
             static value_type parse(InputIterator first, InputIterator last)
             {
-                typedef std::iterator_traits<InputIterator>::value_type type;
+                typedef typename std::iterator_traits<InputIterator>::value_type type;
 
                 auto const distance = std::distance(first, last);
                 if (distance < BufferSize)

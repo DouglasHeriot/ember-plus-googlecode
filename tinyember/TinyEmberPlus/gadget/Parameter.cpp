@@ -194,7 +194,7 @@ namespace gadget
 
     void Parameter::notify() const
     {
-        for each(auto listener in m_listeners)
+        for(auto listener : m_listeners)
         {
             listener->notifyStateChanged(m_state, this);
         }

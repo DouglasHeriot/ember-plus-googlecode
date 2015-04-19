@@ -2,13 +2,8 @@
 #define __TINYEMBER_GADGET_UTIL_ENTITYPATH_H
 
 #include <vector>
-
-/** Forward declarations */
-namespace gadget
-{
-    class Node;
-    class Parameter;
-}
+#include "../../gadget/Parameter.h"
+#include "../../gadget/Node.h"
 
 namespace gadget { namespace util
 {

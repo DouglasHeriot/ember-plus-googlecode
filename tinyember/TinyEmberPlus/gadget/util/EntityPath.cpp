@@ -1,6 +1,4 @@
 #include "EntityPath.h"
-#include "../../gadget/Parameter.h"
-#include "../../gadget/Node.h"
 
 namespace gadget { namespace util 
 {

@@ -1,7 +1,7 @@
 #include <map>
 #include <memory>
 #include <vector>
-#include <ember\Ember.hpp>
+#include <ember/Ember.hpp>
 #include "StreamConverter.h"
 #include "../../gadget/BooleanParameter.h"
 #include "../../gadget/EnumParameter.h"
@@ -38,12 +38,12 @@ namespace glow { namespace util
 
     void StreamConverter::SingleStreamEntryFactory::visit(gadget::IntegerParameter* parameter)
     {
-        m_entry = new GlowStreamEntry(parameter->streamIdentifier(), parameter->value());
+        m_entry = new GlowStreamEntry(parameter->streamIdentifier(), (int)parameter->value());
     }
 
     void StreamConverter::SingleStreamEntryFactory::visit(gadget::RealParameter* parameter)
     {
-        m_entry = new GlowStreamEntry(parameter->streamIdentifier(), parameter->value());
+        m_entry = new GlowStreamEntry(parameter->streamIdentifier(), (double)parameter->value());
     }
 
     StreamConverter::SingleStreamEntryFactory::SingleStreamEntryFactory(gadget::Parameter* parameter)
@@ -78,7 +78,7 @@ namespace glow { namespace util
         }
 
         {
-            for each(auto& pair in dic)
+            for(auto& pair : dic)
             {
                 auto& streams = *pair.second;
                 auto const identifier = pair.first;
@@ -128,7 +128,7 @@ namespace glow { namespace util
                         auto const size = offset + format.size();
 
                         auto buffer = std::vector<unsigned char>(size, 0x00);
-                        for each(auto parameter in streams)
+                        for(auto parameter : streams)
                         {
                             encode(parameter, std::begin(buffer), std::end(buffer));
                             parameter->clearDirtyState();

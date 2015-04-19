@@ -21,7 +21,7 @@ namespace libformula
             typedef typename SymbolContainer::const_iterator const_iterator;
             typedef typename SymbolContainer::reference reference;
             typedef typename SymbolContainer::const_reference const_reference;
-            typedef typename InputIterator input_type;
+            typedef InputIterator input_type;
 
             /**
              * Initializes a new scanner which immediately scans the provided term.

@@ -1,4 +1,4 @@
-#include <formula\TermCompiler.hpp>
+#include <formula/TermCompiler.hpp>
 #include <sstream>
 #include <cstdio>
 #include "IntegerParameter.h"
@@ -41,7 +41,11 @@ namespace gadget
         if (m_format.size() > 0)
         {
             char buffer[256];
+            #ifdef WIN32
             sprintf_s(buffer, 256, m_format.c_str(), value);
+            #else
+            snprintf(buffer, 256, m_format.c_str(), value);
+            #endif
             return std::string(buffer);
         }
         else

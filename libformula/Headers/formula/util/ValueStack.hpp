@@ -55,6 +55,13 @@ namespace libformula { namespace util
             value_type m_value;
     };
 
+    /**
+     * Struct used to convert a stack item of any type supported into either a real or a long value.
+     */
+    template<int ItemType, typename DestType>
+    struct ItemCast
+    {
+    };
 
     /**
      * Represents an item that can be pushed onto the value stack. It may be of integer
@@ -62,61 +69,10 @@ namespace libformula { namespace util
      */ 
     struct ValueStackItem
     {
-        /**
-         * Struct used to convert a stack item of any type supported into either a real or a long value.
-         */
-        template<int ItemType, typename DestType>
-        struct ItemCast
-        {
-        };
-
-        /**
-         * Long to long conversion.
-         */
-        template<>
-        struct ItemCast<ValueStackItemType::Long, long_type>
-        {
-            static long_type as(ValueStackItem const& item)
-            {
-                return item.m_long;
-            }
-        };
-
-        /**
-         * Long to real conversion
-         */
-        template<>
-        struct ItemCast<ValueStackItemType::Long, real_type>
-        {
-            static real_type as(ValueStackItem const& item)
-            {
-                return static_cast<real_type>(item.m_long);
-            }
-        };
-
-        /**
-         * Real to long conversion
-         */
-        template<>
-        struct ItemCast<ValueStackItemType::Real, long_type>
-        {
-            static long_type as(ValueStackItem const& item)
-            {
-                return static_cast<long_type>(item.m_real);
-            }
-        };
-
-        /**
-         * Real to real conversion
-         */
-        template<>
-        struct ItemCast<ValueStackItemType::Real, real_type>
-        {
-            static real_type as(ValueStackItem const& item)
-            {
-                return item.m_real;
-            }
-        };
+        friend struct ItemCast<ValueStackItemType::Long, long_type>;
+        friend struct ItemCast<ValueStackItemType::Long, real_type>;
+        friend struct ItemCast<ValueStackItemType::Real, real_type>;
+        friend struct ItemCast<ValueStackItemType::Real, long_type>;
 
         public:
             /**
@@ -183,7 +139,57 @@ namespace libformula { namespace util
             };
     };
 
+
     /**
+     * Long to long conversion.
+     */
+    template<>
+    struct ItemCast<ValueStackItemType::Long, long_type>
+    {
+        static long_type as(ValueStackItem const& item)
+        {
+            return item.m_long;
+        }
+    };
+
+    /**
+     * Long to real conversion
+     */
+    template<>
+    struct ItemCast<ValueStackItemType::Long, real_type>
+    {
+        static real_type as(ValueStackItem const& item)
+        {
+            return static_cast<real_type>(item.m_long);
+        }
+    };
+
+    /**
+     * Real to long conversion
+     */
+    template<>
+    struct ItemCast<ValueStackItemType::Real, long_type>
+    {
+        static long_type as(ValueStackItem const& item)
+        {
+            return static_cast<long_type>(item.m_real);
+        }
+    };
+
+    /**
+     * Real to real conversion
+     */
+    template<>
+    struct ItemCast<ValueStackItemType::Real, real_type>
+    {
+        static real_type as(ValueStackItem const& item)
+        {
+            return item.m_real;
+        }
+    };
+
+
+        /**
      * The value stack can store values of real and long types. Additionaly, it may
      * convert a long value to a real value and vice versa.
      */

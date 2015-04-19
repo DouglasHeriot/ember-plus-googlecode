@@ -1,1 +1,2 @@
+add_subdirectory(TinyEmberPlus)
 add_subdirectory(TinyEmberPlusRouter)

@@ -17,7 +17,7 @@ namespace serialization { namespace detail
      */
     class GadgetTreeWriter 
     {
-        friend class Archive;
+        friend class serialization::Archive;
         typedef libember::util::OctetStream OctetStream;
         public:
             typedef OctetStream::const_iterator const_iterator;

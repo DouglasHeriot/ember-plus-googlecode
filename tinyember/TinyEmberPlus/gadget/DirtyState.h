@@ -1,6 +1,8 @@
 #ifndef __TINYEMBER_GADGET_DIRTYSTATE_H
 #define __TINYEMBER_GADGET_DIRTYSTATE_H
 
+#include <cstddef>
+
 namespace gadget
 {
     /** Forward declarations */
@@ -19,10 +21,8 @@ namespace gadget
     template<typename FlagType>
     struct DirtyState
     {
-        template<typename FlagType>
         friend bool operator ==(DirtyState<FlagType> const& x, DirtyState<FlagType> const& y);
 
-        template<typename FlagType>
         friend bool operator !=(DirtyState<FlagType> const& x, DirtyState<FlagType> const& y);
 
         public:
